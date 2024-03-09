@@ -36,15 +36,15 @@ if (empty( $messages )) {
 	
 	// sprawdzenie, czy $x i $y są liczbami całkowitymi
 	if (! is_numeric( $loan_am )) {
-		$messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
+		$messages [] = 'Kwota kredytu nie jest liczbą całkowitą';
 	}
 	
 	if (! is_numeric( $rate )) {
-		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
+		$messages [] = 'Oprocentowanie nie jest liczbą całkowitą';
 	}
 	
 	if (! is_numeric( $term )) {
-		$messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
+		$messages [] = 'Ilośś rat nie jest liczbą całkowitą';
 	}
 
 }
