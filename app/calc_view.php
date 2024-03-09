@@ -49,7 +49,7 @@ if (isset($messages)) {
 
 <?php if (isset($result)){ ?>
 <div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: #ff0; width:300px;">
-<?php echo 'Rata miesięczna: '.$result; ?>
+<?php echo 'Rata miesięczna: '.$result.' zł'?>
 </div>
 <?php } ?>
 
