@@ -21,7 +21,7 @@
 
 	<br>
 	<label class="block" for="credit-rate">Oprocentowanie (%): </label>
-	<input id="credit-rate" type="text" name="rate" value="<?php isset($rate)? print($rate): "Write number"; ?>" />
+	<input id="credit-rate" type="text" name="rate" value="<?php isset($show_rate)? print($show_rate): "Write number"; ?>" />
 	<br />
 
 	<br>

@@ -9,13 +9,13 @@ require_once dirname(__FILE__).'/../config.php';
 // 1. pobranie parametrów
 
 $loan_am = $_REQUEST ['loan_am'];
-$rate = $_REQUEST ['rate'];
+$show_rate = $_REQUEST ['rate'];
 $term = $_REQUEST ['term'];
 
 // 2. walidacja parametrów z przygotowaniem zmiennych dla widoku
 
 // sprawdzenie, czy parametry zostały przekazane
-if ( ! (isset($loan_am) && isset($rate) && isset($term))) {
+if ( ! (isset($loan_am) && isset($show_rate) && isset($term))) {
 	//sytuacja wystąpi kiedy np. kontroler zostanie wywołany bezpośrednio - nie z formularza
 	$messages [] = 'Błędne wywołanie aplikacji. Brak jednego z parametrów.';
 }
@@ -24,7 +24,7 @@ if ( ! (isset($loan_am) && isset($rate) && isset($term))) {
 if ( $loan_am == "") {
 	$messages [] = 'Nie podano kwoty kredytu';
 }
-if ( $rate == "") {
+if ( $show_rate == "") {
 	$messages [] = 'Nie podano oprocentowania';
 }
 if ( $term == '') {
@@ -39,7 +39,7 @@ if (empty( $messages )) {
 		$messages [] = 'Kwota kredytu nie jest liczbą całkowitą';
 	}
 	
-	if (! is_numeric( $rate )) {
+	if (! is_numeric( $show_rate )) {
 		$messages [] = 'Oprocentowanie nie jest liczbą całkowitą';
 	}
 	
@@ -55,7 +55,7 @@ if (empty ( $messages )) { // gdy brak błędów
 	
 	//konwersja parametrów na int
 	$loan_am = intval($loan_am);
-	$rate = intval($rate);
+	$rate = intval($show_rate);
 	$term = intval($term);
 
 	$rate = ($rate/100)/12;
