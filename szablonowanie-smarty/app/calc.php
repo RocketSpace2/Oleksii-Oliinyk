@@ -14,8 +14,6 @@ $smarty->assign('page_description','Profesjonalne szablonowanie oparte na biblio
 $smarty->assign('page_header','Szablony Smarty');
 $smarty->assign('hide_intro',false);
 
-$is_login_view = false;
-
 include _ROOT_PATH.'/app/security/check.php';
 
 if($is_login_view){
