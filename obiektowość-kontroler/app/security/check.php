@@ -2,9 +2,7 @@
 require_once dirname(__FILE__).'/../../config.php';
 //inicjacja mechanizmu sesji
 
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
+session_start();
 
 $is_login_view = false;	
 

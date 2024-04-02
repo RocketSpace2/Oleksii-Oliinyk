@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2024-04-02 18:06:30
+/* Smarty version 4.3.2, created on 2024-04-02 18:41:23
   from 'D:\Work\XAMPP\htdocs\oleksii-oliinyk\obiektowość-kontroler\app\security\login_view.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_660c2d06e6c000_65046603',
+  'unifunc' => 'content_660c35335aef57_00687246',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0e9b6fd674e93c2790d887ae034b50fc4977f001' => 
+    '7198ade602602f416d9b4e18f5155815fcfc01e9' => 
     array (
       0 => 'D:\\Work\\XAMPP\\htdocs\\oleksii-oliinyk\\obiektowość-kontroler\\app\\security\\login_view.php',
-      1 => 1712073943,
+      1 => 1712076080,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_660c2d06e6c000_65046603 (Smarty_Internal_Template $_smarty_tpl) {
+function content_660c35335aef57_00687246 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1462761303660c2d06e588a4_58839428', 'form');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2060933725660c35335a0567_62934634', 'form');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "../../templates/main.html");
 }
 /* {block 'form'} */
-class Block_1462761303660c2d06e588a4_58839428 extends Smarty_Internal_Block
+class Block_2060933725660c35335a0567_62934634 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'form' => 
   array (
-    0 => 'Block_1462761303660c2d06e588a4_58839428',
+    0 => 'Block_2060933725660c35335a0567_62934634',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -60,7 +60,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 
 
 <?php if ($_smarty_tpl->tpl_vars['msgs']->value->isError()) {?>
-	<div style="padding-left: 7em;">
+	<div><!-- <div style="padding-left: 4em;"> -->
 		<h4>Wystąpiły błędy: </h4>
 		<ol>
 		<?php

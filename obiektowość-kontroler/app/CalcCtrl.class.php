@@ -6,16 +6,7 @@
 require_once $conf->root_path.'/lib/smarty/Smarty.class.php';
 require_once $conf->root_path.'/lib/Messages.class.php';
 require_once $conf->root_path.'/app/CalcForm.class.php';
-//require_once $conf->root_path.'/app/CalcResult.class.php';
-
-// include $conf->root_path.'/app/security/check.php';
-
-// if($is_login_view){
-// 	$smarty->display($conf->root_path.'/app/security/login_view.php');
-// 	exit();
-// }
-
-// $is_login_view = false;
+include $conf->root_path.'/app/security/check.php';
 
 /** Kontroler kalkulatora
  * @author Przemysław Kudłacik
@@ -23,7 +14,7 @@ require_once $conf->root_path.'/app/CalcForm.class.php';
  */
 class CalcCtrl {
 
-	private $msgs;   //wiadomości dla widoku
+	public $msgs;   //wiadomości dla widoku
 	private $form;   //dane formularza (do obliczeń i dla widoku)
 	private $result; //inne dane dla widoku
 	private $smarty;
@@ -32,12 +23,13 @@ class CalcCtrl {
 	 * Konstruktor - inicjalizacja właściwości
 	 */
 	public function __construct(){
-		global $conf;
 		//stworzenie potrzebnych obiektów
 		$this->msgs = new Messages();
 		$this->form = new CalcForm();
 
 		$this->smarty = new Smarty();
+		
+		global $conf;
 		//konfikuracja szablonu smarty
 		$this->smarty->assign('conf',$conf);
 		
@@ -47,7 +39,6 @@ class CalcCtrl {
 				
 		$this->smarty->assign('msgs',$this->msgs);
 		$this->smarty->assign('form',$this->form);
-		$this->smarty->assign('res',$this->result);
 	}
 	
 	/** 
@@ -104,12 +95,32 @@ class CalcCtrl {
 		return ! $this->msgs->isError();
 	}
 	
+	
+	/**
+	 * Wygenerowanie widoku
+	 */
+	public function checkLogin(){
+		global $conf;
+		global $is_login_view;
+
+		//include $conf->root_path.'/app/security/check.php';
+
+			if($is_login_view){
+				$this->smarty->display($conf->root_path.'/app/security/login_view.php');
+				exit();
+			}	
+	}
+
+	public function showView(){
+		global $conf;
+		$this->smarty->display($conf->root_path.'/app/calc.html');
+	}
+
 	/** 
 	 * Pobranie wartości, walidacja, obliczenie i wyświetlenie
 	 */
 	public function process(){
 		global $role;
-		global $conf;
 
 		$this->checkLogin();
 
@@ -117,6 +128,8 @@ class CalcCtrl {
 		
 		if ($this->validate()){
 			if($role != 'admin' && $this->form->loan_am > 10000){	
+				$this->msgs->addError('Nie jesteś adminem, więc kwota nie może byc większa, niż 10 000 zł !!!');
+			}else{
 				//konwersja parametrów na int
 				$this->form->loan_am = intval($this->form->loan_am);
 				$this->form->rate = intval($this->form->show_rate);
@@ -129,38 +142,13 @@ class CalcCtrl {
 				$this->result = $this->result * 100;
 				$this->result = intval($this->result);
 				$this->result = $this->result/100;
+
+				$this->smarty->assign('res',$this->result);
 				
 				$this->msgs->addInfo('Wykonano obliczenia.');
-			}else{
-				$this->msgs->addError('Nie jesteś adminem, więc kwota nie może byc większa, niż 10 000 zł !!!');
 			}
 		}
 		
-		$this->smarty->display($conf->root_path.'/app/calc.html');
-	}
-	
-	
-
-	/**
-	 * Wygenerowanie widoku
-	 */
-	public function checkLogin(){
-		global $conf;
-		global $role;
-
-		include $conf->root_path.'/app/security/check.php';
-
-		
-
-		//if(empty($role)){
-			if($is_login_view){
-				$this->smarty->display($conf->root_path.'/app/security/login_view.php');
-				exit();
-			}
-
-			//$is_login_view = false;
-		//}
-		
-		
+		$this->showView();
 	}
 }

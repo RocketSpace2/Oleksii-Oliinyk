@@ -18,7 +18,7 @@
 
 
 {if $msgs->isError()}
-	<div style="padding-left: 7em;">
+	<div>
 		<h4>Wystąpiły błędy: </h4>
 		<ol>
 		{foreach  $msgs->getErrors() as $msg}
