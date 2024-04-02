@@ -1,0 +1,54 @@
+{extends file="../templates/main.html"}
+
+{block name=form}
+
+<form id="form" method="post" action="{$conf->app_url}/app/calc.php">
+                <div class="row gtr-uniform">
+                    <div class="col-6 off-1">
+                        <input type="text" name="loan_am" id="demo-name" value="{$form->loan_am}" placeholder="Kwota kredytu" />
+                    </div>
+                    <div class="col-6 off-1">
+                        <input type="text" name="rate" id="demo-email" value="{$form->show_rate}" placeholder="Oprocentowanie (%)" />
+                    </div>
+                    <div class="col-6 off-1">
+                        <input type="text" name="term" id="demo-email" value="{$form->term}" placeholder="Ilość rat miesięcznych" />
+                    </div>
+                    <!-- Break  -->
+                    <div class="col-12 off-1">
+						{if isset($res)}
+							<h4>Rata miesięczna: {$res} zł</h4>
+							{/if}
+                        <ul class="actions">
+                            <li><input type="submit" value="Count" class="primary" /></li>
+                        </ul>
+                    </div>
+                </div>	
+</form>
+
+{if $msgs->isError()}
+	<div style="padding-left: 7em;">
+		<h4>Wystąpiły błędy: </h4>
+		<ol>
+		{foreach  $msgs->getErrors() as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+		</ol>
+	</div>	
+{/if}
+
+{if $msgs->isInfo()}
+	<div style="padding-left: 7em;">
+		<h4>Informacje: </h4>
+		<ol>
+		{foreach  $msgs->getInfos() as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+		</ol>
+	</div>
+{/if}
+
+{/block}

@@ -52,10 +52,10 @@ getParamsLogin($form);
 
 if (!validateLogin($form,$messages)) {
 	//jeśli błąd logowania to wyświetl formularz z tekstami z $messages
-	include _ROOT_PATH.'/app/calc.php';
+	include $conf->root_path.'/app/security/login_view.php';
 } else { 
 	//ok przekieruj lub "forward" na stronę główną
 	
 	//redirect - przeglądarka dostanie ten adres do "przejścia" na niego (wysłania kolejnego żądania)
-	header("Location: "._APP_URL);
+	header("Location: ".$conf->app_url);
 }

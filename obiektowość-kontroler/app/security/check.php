@@ -1,9 +1,13 @@
 <?php
 require_once dirname(__FILE__).'/../../config.php';
 //inicjacja mechanizmu sesji
-session_start();
 
-$is_login_view = false;
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+$is_login_view = false;	
+
 //pobranie roli
 $role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
 

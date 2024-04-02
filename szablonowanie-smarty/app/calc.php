@@ -21,7 +21,7 @@ if($is_login_view){
 	exit();
 }
 
-$is_login_view = false;
+//$is_login_view = false;
 
 //pobranie parametrów
 function getParams(&$form){
