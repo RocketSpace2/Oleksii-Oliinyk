@@ -35,6 +35,7 @@ require_once $conf->root_path.'/core/ClassLoader.class.php';
 
 new core\ClassLoader();
 
+
 require_once getConf()->root_path.'/core/functions.php';
 
 $action = getFromRequest('action');
