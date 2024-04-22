@@ -1,0 +1,20 @@
+{extends file="main.html"}
+{block name="content"}
+<div style="width:90%; margin: 2em auto;">
+
+    <form id="form" action="{$conf->action_root}login" method="post" class="pure-form pure-form-stacked">
+        <legend>Logowanie</legend>
+        <br>
+        <fieldset>
+            <label for="id_login">login: </label>
+            <input id="id_login" type="text" name="login" value="" />
+            <label for="id_pass">pass: </label>
+            <input id="id_pass" type="password" name="pass" />
+        </fieldset>
+        <br>
+        <input type="submit" value="zaloguj" class="pure-button pure-button-primary"/>
+    </form>	
+
+{include file="messages.html"}
+
+{/block}
