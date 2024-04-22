@@ -1,0 +1,25 @@
+{if $msgs->isError()}
+	<div style="padding-left: 7em;">
+		<h4>Wystąpiły błędy: </h4>
+		<ol>
+		{foreach  $msgs->getErrors() as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+		</ol>
+	</div>	
+{/if}
+
+{if $msgs->isInfo()}
+	<div style="padding-left: 7em;">
+		<h4>Informacje: </h4>
+		<ol>
+		{foreach  $msgs->getInfos() as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+		</ol>
+	</div>
+{/if}
