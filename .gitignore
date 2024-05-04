@@ -1,7 +1,5 @@
 smarty/
 .*
 templates_c/
-js/
-sass/
-webfonts/
-css/
+assets/
+images/
