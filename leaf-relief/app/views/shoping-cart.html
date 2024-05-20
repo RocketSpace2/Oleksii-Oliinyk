@@ -1,0 +1,245 @@
+{extends file = "default.html"}
+{block name=content}
+    <style>
+        .hide{
+            display: none;
+        }
+
+        .custom {
+            border-radius: 20px;
+            color: #f56a6a;
+            text-align: center;
+            width: 8%;
+            border: 3px solid #f56a6a;
+            display: inline-block;
+            cursor: pointer;
+            
+        }
+        .background{
+                background-color: #f56a6a;
+        }
+    </style>
+    
+                                <br>
+                                <h2>Koszyk</h2>
+                                <br>
+
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr >
+                                                <th style="display: inline; width: 15%;">Nazwa</th>
+                                                <th style="display: inline-flex; width: 34.5%;">Opis</th>
+                                                <th style="display: inline-flex; width: 12%;">Ilość</th>
+                                                <th style="display: inline-flex;">Cena</th>
+                                                <th></th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr  style="display: flex; width: 101.9%;">
+                                                <td>Item1</td>
+                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
+                                                <td style="display: inline-block; width: 20%;">1</td>
+                                                <td style="display: inline-block; width: 10%;">29.99</td>
+                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
+                                                    <label for="minus" class="custom">
+                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
+                                                    
+                                                    <label for="plus" class="custom">
+                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+
+                                                    <label for="delete" class="custom background">
+                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                            <tr  style="display: flex; width: 101.9%;">
+                                                <td>Item1</td>
+                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
+                                                <td style="display: inline-block; width: 20%;">1</td>
+                                                <td style="display: inline-block; width: 10%;">29.99</td>
+                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
+                                                    <label for="minus" class="custom">
+                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
+                                                    
+                                                    <label for="plus" class="custom">
+                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+
+                                                    <label for="delete" class="custom background">
+                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                            <tr  style="display: flex; width: 101.9%;">
+                                                <td>Item1</td>
+                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
+                                                <td style="display: inline-block; width: 20%;">1</td>
+                                                <td style="display: inline-block; width: 10%;">29.99</td>
+                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
+                                                    <label for="minus" class="custom">
+                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
+                                                    
+                                                    <label for="plus" class="custom">
+                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+
+                                                    <label for="delete" class="custom background">
+                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                            <tr  style="display: flex; width: 101.9%;">
+                                                <td>Item1</td>
+                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
+                                                <td style="display: inline-block; width: 20%;">1</td>
+                                                <td style="display: inline-block; width: 10%;">29.99</td>
+                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
+                                                    <label for="minus" class="custom">
+                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
+                                                    
+                                                    <label for="plus" class="custom">
+                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+
+                                                    <label for="delete" class="custom background">
+                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                            <tr  style="display: flex; width: 101.9%;">
+                                                <td>Item1</td>
+                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
+                                                <td style="display: inline-block; width: 20%;">1</td>
+                                                <td style="display: inline-block; width: 10%;">29.99</td>
+                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
+                                                    <label for="minus" class="custom">
+                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
+                                                    
+                                                    <label for="plus" class="custom">
+                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+
+                                                    <label for="delete" class="custom background">
+                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
+                                                    </label>
+                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2" style="display: inline-block; width: 52.5%;"></td>
+                                                <td style="display: inline-block; width: 22.5%">100.00</td>
+                                                <td style="display: inline-block; text-align: right;">
+                                                    <form method="post" action="#">
+                                                        <input type="submit" name="buy" id="buy" value="Kupić" class="primary">
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+							<!-- Section -->
+                            <section id="products">
+                                <header class="major">
+                                    <h2>Najlepsze produkty</h2>
+                                </header>
+                                <div class="posts">
+                                    <article>
+                                        <a href="#" class="image"><img src="{$conf}/../app/views/images/pic01.jpg" alt="" /></a>
+                                        <div style="display: inline-block; width: 100%;">
+                                            <h3 style="display: inline-block; width: 19%;">Pierwszy</h3>
+                                            <div style="display: inline-block; width: 79%;"><span style="text-align: right; display: inline-block; width: 100%;">Cena: <strong style="font-size: 1.15em;">120 zł</strong></span></div>
+                                            <span style="text-align: right; display: inline-block; width: 100%;">Typ: <strong style="font-size: 1.15em;">none</strong></span>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="product.html" class="button">Więcej</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="{$conf}/../app/views/images/pic02.jpg" alt="" /></a>
+                                        <div style="display: inline-block; width: 100%;">
+                                            <h3 style="display: inline-block; width: 19%;">Drugi</h3>
+                                            <div style="display: inline-block; width: 79%;"><span style="text-align: right; display: inline-block; width: 100%;">Cena: <strong style="font-size: 1.15em;">120 zł</strong></span></div>
+                                            <span style="text-align: right; display: inline-block; width: 100%;">Typ: <strong style="font-size: 1.15em;">none</strong></span>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">Więcej</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="{$conf}/../app/views/images/pic03.jpg" alt="" /></a>
+                                        <div style="display: inline-block; width: 100%;">
+                                            <h3 style="display: inline-block; width: 19%;">Trzeci</h3>
+                                            <div style="display: inline-block; width: 79%;"><span style="text-align: right; display: inline-block; width: 100%;">Cena: <strong style="font-size: 1.15em;">120 zł</strong></span></div>
+                                            <span style="text-align: right; display: inline-block; width: 100%;">Typ: <strong style="font-size: 1.15em;">none</strong></span>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">Więcej</a></li>
+                                        </ul>
+                                    </article>
+                                    <article>
+                                        <a href="#" class="image"><img src="{$conf}/../app/views/images/pic04.jpg" alt="" /></a>
+                                        <div style="display: inline-block; width: 100%;">
+                                            <h3 style="display: inline-block; width: 19%;">Czwarty</h3>
+                                            <div style="display: inline-block; width: 79%;"><span style="text-align: right; display: inline-block; width: 100%;">Cena: <strong style="font-size: 1.15em;">120 zł</strong></span></div>
+                                            <span style="text-align: right; display: inline-block; width: 100%;">Typ: <strong style="font-size: 1.15em;">none</strong></span>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                        <ul class="actions">
+                                            <li><a href="#" class="button">Więcej</a></li>
+                                        </ul>
+                                    </article>
+                                </div>
+
+                                <br>
+                                <div class="col-6 col-12-small">
+                                    <ul class="actions stacked">
+                                        <li><a href="{url action = "products_list_display"}" class="button primary fit">Więcej</a></li>
+                                    </ul>
+                                </div>
+                                
+                            </section>
+
+								
+						</div>
+					</div>
+{/block}

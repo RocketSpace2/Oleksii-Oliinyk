@@ -1,0 +1,58 @@
+{extends file = "default.html"}
+{block name=content}
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border-radius: 10px;
+            color: #f56a6a;
+            text-align: center;
+            vertical-align: middle;
+            width: 100%;
+            border: 3px solid #f56a6a;
+            display: inline-block;
+            padding-top: 35%;
+            padding-bottom: 35%;
+            cursor: pointer;
+        }
+
+        </style>
+							<!-- Content -->
+                            <section id="banner">
+                                <div class="content">
+                                    <header>
+                                        <form id="main-form" method="post" action="#">
+                                            
+                                                <span>Nazwa</span>
+                                                <input type="text" placeholder="">
+                                                <br>
+                                                <span>Typ</span>
+                                                <select name="type" id="type">
+                                                    <option value="one">One</option>
+                                                    <option value="two">Two</option>
+                                                    <option value="three">Three</option>
+                                                </select>
+                                                <br>
+                                                <span>Cena</span>
+                                                <input type="text" placeholder="">
+                                                <br>
+                                                <span>Opis</span>
+                                                <textarea name="description" id="description" rows="10" style="resize: none;"></textarea>
+                                                <br>
+                                                <input class="primary" style="display: inline-block; width: 100%;" type="submit" value="Edytuj">
+                                        </form>
+                                    </header>
+                                </div>
+                                <div style="display: flex; width: 50%; padding: 2% 2% 5% 5%;">
+                                    <label for="photo" class="custom-file-upload">
+                                            <img src="images/photo.png" style="width: 40%; " alt="#">
+                                    </label>
+                                    <input id="photo" type="file" form="main-form">
+                                </div>
+                                
+                            </section>
+						</div>
+					</div>
+{/block}
