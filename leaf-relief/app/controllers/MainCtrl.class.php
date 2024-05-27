@@ -9,14 +9,20 @@ class MainCtrl{
     public function __construct(){
         
 
-        App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
-        App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
-        App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
+        $this->checkRole();
        
         App::getSmarty()->assign("conf",App::getConf()->app_url);
     }
 
+    public function checkRole(){
+        App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
+        App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
+        App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
+    }
+
     public function action_main_display(){
+        $this->checkRole();
+
         App::getSmarty()->display("main.html");
     }
     public function action_products_list_display(){

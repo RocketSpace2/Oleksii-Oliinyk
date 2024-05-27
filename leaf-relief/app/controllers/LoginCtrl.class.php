@@ -84,15 +84,13 @@ class LoginCtrl{
         
         $this->addRoles();
 
-        //RoleUtils::addRole("user");
-
         App::getRouter()->forwardTo("main_display");
     }
 
     public function action_logout(){
         session_destroy();
 
-        App::getRouter()->redirectTo("main_display");
+        App::getRouter()->forwardTo("main_display");
     }
 
 }
