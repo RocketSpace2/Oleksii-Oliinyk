@@ -1,5 +1,18 @@
 {extends file = "default.html"}
 {block name=content}
+<style>
+	.error{
+		background-color: #f56a6a;
+		padding-left: 3%;
+		padding-right: 3%;
+		margin: auto;
+		color: white;
+		display: inline-flex;
+		border-radius: 15px;
+		font-size: 1.1em;
+		font-family: "Roboto Slab", serif;
+	}
+</style>
 							<!-- Content -->
 								<section>
 									<header class="main">
@@ -11,15 +24,23 @@
 
 									<hr class="major" />
                                     <!-- Form -->
-													
+									{if !$msgs->isEmpty()}
+										<ul class="error">	
+												{foreach $msgs->getMessages() as $msg}
+												<li>{$msg->text}</li>
+												{/foreach}
+										</ul>	
+										<br>
+										<br>
+									{/if}			
 
-													<form method="post" action="#">
+													<form method="post" id="login" action="{url action ="login"}">
 														<div class="row gtr-uniform">
 															<div class="col-6 col-12-xsmall">
-																<input type="text" name="demo-name" id="demo-name" value="" placeholder="Login" />
+																<input type="text" name="login" id="login" value="" placeholder="Login" required/>
 															</div>
 															<div class="col-6 col-12-xsmall">
-																<input type="email" name="demo-email" id="demo-email" value="" placeholder="Password" />
+																<input type="password" name="password" id="password" value="" placeholder="Password" required/>
 															</div>
 															
 														</div>
@@ -32,7 +53,12 @@
 													<div class="">
 														<div class="col-6 col-12-small">
 															<ul class="actions stacked">
-																<li><a href="index.html" class="button primary fit">Zaloguj się</a></li>
+
+																<!-- <div style="display: inline-block; width: 100%; padding-left: 0%;">
+                                                                    <input style="display: flex; width: 100%; padding-left: 44%;" type="submit" value="Zarejestruj się" class="primary">
+                                                                </div> -->
+																<li><input form="login" style="display: flex; width: 100%; padding-left: 46%" type="submit" value="Zaloguj się" class="primary"></li>
+																<!-- <li><a href="index.html" class="button primary fit">Zaloguj się</a></li> -->
 																<li><a href="{url action = "registration_display"}" class="button fit">Zarejestruj się</a></li>
 															</ul>
 														</div>

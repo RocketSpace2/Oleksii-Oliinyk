@@ -17,80 +17,26 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Winner228</td>
-                                                <td><form id="edit-user" method="post" action="#">
-                                                    <select name="role" id="role">
-                                                        <option value="user">Użytkownik</option>
-                                                        <option value="worker">Pracownik</option>
-                                                        <option value="admin">Administrator</option>
-                                                    </select>
-                                                </form></td> 
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
+                                                {foreach $row as $key => $data}
+                                                {if $key == role_name}
+                                                    <td><form id="edit-user" method="post" action="{url action="edit_user"}">
+                                                        <select name="role" id="role">
+                                                            <option value="1" {if $role == "user"} selected {/if}>Użytkownik</option>
+                                                            <option value="2"  {if $role == "worker"} selected {/if}>Pracownik</option>
+                                                            <option value="3"  {if $role == "admin"} selected {/if}>Administrator</option>
+                                                        </select>
+                                                    </form></td> 
+                                                {elseif $data == null}
+                                                    <td> — </td>
+                                                {else}
+                                                    <td>{$data}</td>
+                                                {/if}
+                                                {/foreach}
                                                 <td>
                                                     <input form="edit-user" class="primary" type="submit" name="user-role" id="user-role" value="Edytuj">
-                                                </td>                                        
+                                                </td> 
                                             </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td><form id="edit-user" method="post" action="#">
-                                                    <select name="role" id="role">
-                                                        <option value="user">Użytkownik</option>
-                                                        <option value="worker">Pracownik</option>
-                                                        <option value="admin">Administrator</option>
-                                                    </select>
-                                                </form></td> 
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-                                                <td>
-                                                    <input form="edit-user" class="primary" type="submit" name="user-role" id="user-role" value="Edytuj">
-                                                </td>                                        
-                                            </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td><form id="edit-user" method="post" action="#">
-                                                    <select name="role" id="role">
-                                                        <option value="user">Użytkownik</option>
-                                                        <option value="worker">Pracownik</option>
-                                                        <option value="admin">Administrator</option>
-                                                    </select>
-                                                </form></td> 
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-                                                <td>
-                                                    <input form="edit-user" class="primary" type="submit" name="user-role" id="user-role" value="Edytuj">
-                                                </td>                                        
-                                            </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td><form id="edit-user" method="post" action="#">
-                                                    <select name="role" id="role">
-                                                        <option value="user">Użytkownik</option>
-                                                        <option value="worker">Pracownik</option>
-                                                        <option value="admin">Administrator</option>
-                                                    </select>
-                                                </form></td> 
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-                                                <td>
-                                                    <input form="edit-user" class="primary" type="submit" name="user-role" id="user-role" value="Edytuj">
-                                                </td>                                        
-                                            </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td><form id="edit-user" method="post" action="#">
-                                                    <select name="role" id="role">
-                                                        <option value="user">Użytkownik</option>
-                                                        <option value="worker">Pracownik</option>
-                                                        <option value="admin">Administrator</option>
-                                                    </select>
-                                                </form></td> 
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-                                                <td>
-                                                    <input form="edit-user" class="primary" type="submit" name="user-role" id="user-role" value="Edytuj">
-                                                </td>                                       
-                                            </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>

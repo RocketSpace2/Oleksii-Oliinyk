@@ -2,85 +2,73 @@
 {block name=content}
                                 <br>
                                 <h2>Użytkownicy</h2>
-                                <br>
-
+                                <section id="search" class="alt">
+                                    <form  id="user-search" method="post" action="{url action = "filter_users_list"}" style="display: inline-block; width: 40%;">
+                                        <input  type="text" id="query" name="query" placeholder="Login użytkownika">
+                                    </form>
+                                    <div style="display: inline-block; vertical-align: 5%;">
+                                            <button type="submit" name="role" value="deactivated" form="user-search">
+                                                Role nie aktywne
+                                            </button>
+                                            <button type="submit" name="role" value="activated" form="user-search">
+                                                Role aktywne
+                                            </button>
+                                            <input type="submit" value="Wyszukaj" class="primary" form="user-search">
+                                    </div>
+                                </section>
                                 <div class="table-wrapper">
                                     <table>
                                         <thead>
                                             <tr >
                                                 <th>Login</th>
                                                 <th>Rola</th>
-                                                <th>Data aktywacji</th>
-                                                <th>Data deaktywacji</th>
+                                                <th>Data aktywacji roli</th>
+                                                <th>Data deaktywacji roli</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td>user</td>
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-												<td>
-													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
-												</td>
-                                                <td><form method="post" action="#">
-                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
-                                                </form></td>
-                                                                                              
+                                            {assign var="login" value = ""}
+                                            {foreach $catalog_users as $row}
+                                            {assign var="temp" value = false}
+                                                <tr>
+                                                    {$login = $row.login}
+                                                {foreach $row as $data}
+
+                                                    {if $data == null}
+                                                        <td> — </td>
+                                                    {else}
+                                                        <td>{$data}</td>
+                                                    {/if}    
+                                                    
+
+                                                    {if $data == "user"}
+                                                        {$temp = true}   
+                                                    {/if}
+                                                {/foreach}
+                                                
+                                                {if $temp}
+                                                <td>
+                                                    <form style="display: inline;" method="post" action="{url action = "edit_users_list"}">
+                                                        <button type="submit" name="login" value="{$login}">
+                                                            Edytuj
+                                                        </button>
+                                                    </form>
+
+                                                    <form style="display: inline;" method="post" action="{url action = "delete_user"}">
+                                                        <button class="primary" type="submit" name="login" value="{$login}">
+                                                            Usunąć
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                               
+                                                {else}
+                                                <td></td>
+                                                {/if}
+                                                
+                                           
                                             </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td>user</td>
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-												<td>
-													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
-												</td>
-                                                <td><form method="post" action="#">
-                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td>user</td>
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-												<td>
-													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
-												</td>
-                                                <td><form method="post" action="#">
-                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td>user</td>
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-												<td>
-													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
-												</td>
-                                                <td><form method="post" action="#">
-                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr>
-                                                <td>Winner228</td>
-                                                <td>user</td>
-                                                <td>09.05.2024</td>
-                                                <td> — </td>
-												<td>
-													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
-												</td>
-                                                <td><form method="post" action="#">
-                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
+                                            {/foreach}
                                         </tbody>
                                     </table>
                                 </div>

@@ -7,6 +7,8 @@ use core\RoleUtils;
 class MainCtrl{
 
     public function __construct(){
+        
+
         App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
         App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
         App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
@@ -29,12 +31,8 @@ class MainCtrl{
     public function action_shoping_cart_display(){
         App::getSmarty()->display("shoping-cart.html");
     }
-    public function action_users_list_display(){
-        App::getSmarty()->display("users-list.html");
-    }
-    public function action_login_display(){
-        App::getSmarty()->display("login.html");
-    }
+    
+    
     public function action_edit_products_list_worker_display(){
         App::getSmarty()->display("edit-products-list-worker.html");
     }

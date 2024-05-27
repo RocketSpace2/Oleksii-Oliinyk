@@ -19,6 +19,7 @@ class Config extends \ArrayObject{
 	public $db_name;
 	public $db_user;
 	public $db_pass;
+	public $db_error;
 	public $db_charset;
 	public $db_prefix;
 	public $db_option;

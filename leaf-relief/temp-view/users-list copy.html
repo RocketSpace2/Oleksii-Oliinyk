@@ -1,0 +1,91 @@
+{extends file = "default.html"}
+{block name=content}
+                                <br>
+                                <h2>Użytkownicy</h2>
+                                <section id="search" class="alt">
+                                    <form  id="user-search" method="post" action="#" style="display: inline-block; width: 40%;">
+                                        <input  type="text" id="query" name="query" placeholder="Nazwa użytkownika">
+                                    </form>
+                                    <div style="display: inline-block; vertical-align: 5%;">
+                                            <button type="submit" value="deactivated" form="user-search">
+                                                Role nie aktywne
+                                            </button>
+                                            <button type="submit" value="activated" form="user-search">
+                                                Role aktywne
+                                            </button>
+                                            <input type="submit" value="Wyszukaj" class="primary" form="user-search">
+                                    </div>
+                                </section>
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr >
+                                                <th>Login</th>
+                                                <th>Rola</th>
+                                                <th>Data aktywacji roli</th>
+                                                <th>Data deaktywacji roli</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr > 
+                                                <td>Winner228</td>
+                                                <td>user</td>
+                                                <td>09.05.2024</td>
+                                                <td> — </td>
+                                                <td style="padding-bottom: 0%;"><form method="post" action="#">
+                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                            <tr>
+                                                <td>Winner228</td>
+                                                <td>worker</td>
+                                                <td>20.05.2024</td>
+                                                <td> — </td>
+												<td>
+													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
+												</td>                                         
+                                            </tr>
+                                            <tr>
+                                                <td>Winner228</td>
+                                                <td>admin</td>
+                                                <td>15.05.2024</td>
+                                                <td>20.05.2024</td>                                        
+                                            </tr>
+                                            <tr>
+                                                <td>Winner228</td>
+                                                <td>user</td>
+                                                <td>09.05.2024</td>
+                                                <td> — </td>
+                                                <td style="padding-bottom: 0%;"><form method="post" action="#">
+                                                    <input class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                            <tr>
+                                                <td>Winner228</td>
+                                                <td>worker</td>
+                                                <td>09.05.2024</td>
+                                                <td> — </td>
+												<td>
+													<a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
+												</td>                                         
+                                            </tr>
+                                            <tr>
+                                                <td>Winner228</td>
+                                                <td>user</td>
+                                                <td>09.05.2024</td>
+                                                <td> — </td>
+                                                <td style="padding-bottom: 0%; "><form method="post" action="#">
+                                                    <a href="{url action = "edit_users_list_display"}" class="button">Edytuj</a>
+                                                    <input style="display: block; margin-top: 5%;" class="primary" type="submit" name="delete-user" id="delete-user" value="Usunąć">
+                                                </form></td>
+                                                                                              
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+						</div>
+					</div>
+{/block}
