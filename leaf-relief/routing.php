@@ -7,8 +7,8 @@ App::getRouter()->setDefaultRoute('main_display'); #default action
 App::getRouter()->setLoginRoute('login_display'); #action to forward if no permissions
 
 Utils::addRoute('main_display', 'MainCtrl');
-Utils::addRoute('products_list_display', 'MainCtrl');
-Utils::addRoute('products_list_worker_display', 'MainCtrl',["worker"]);
+
+
 Utils::addRoute('shoping_cart_display', 'MainCtrl',["user"]);
 
 
@@ -28,7 +28,19 @@ Utils::addRoute('users_list_display', 'UserListCtrl',["admin"]);
 Utils::addRoute('filter_users_list', 'UserListCtrl',["admin"]);
 Utils::addRoute('edit_users_list', 'UserListCtrl',["admin"]);
 Utils::addRoute('edit_user', 'UserListCtrl',["admin"]);
+Utils::addRoute('delete_user', 'UserListCtrl',["admin"]);
 
 Utils::addRoute('profile_display', 'ProfileCtrl',["user"]);
 Utils::addRoute('edit_profile_display', 'ProfileCtrl',["user"]);
 Utils::addRoute('edit_profile', 'ProfileCtrl',["user"]);
+
+Utils::addRoute('products_list_worker_display', 'ProductsListWorkerCtrl',["worker"]);
+Utils::addRoute('add_product_display', 'ProductsListWorkerCtrl',["worker"]);
+Utils::addRoute('add_product', 'ProductsListWorkerCtrl',["worker"]);
+Utils::addRoute('delete_product', 'ProductsListWorkerCtrl',["worker"]);
+Utils::addRoute('edit_product_display', 'ProductsListWorkerCtrl',["worker"]);
+Utils::addRoute('edit_product', 'ProductsListWorkerCtrl',["worker"]);
+
+Utils::addRoute('products_list_display', 'ProductListCtrl');
+Utils::addRoute('filter_products', 'ProductListCtrl');
+Utils::addRoute('product_display', 'ProductListCtrl');

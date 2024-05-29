@@ -17,7 +17,7 @@
             padding-bottom: 35%;
             cursor: pointer;
         }
-
+        
         .error{
             background-color: #f56a6a;
             padding-left: 3%;
@@ -30,49 +30,52 @@
             font-size: 1.1em;
             font-family: "Roboto Slab", serif;
         }
+
+
         </style>
 							<!-- Content -->
-
                             {if !$msgs->isEmpty()}
-                            <div style="margin-top: 5%;">
-                                {foreach $msgs->getMessages() as $msg}
-                                <ul class="error">	
-                                    <li>{$msg->text}</li>
-                                </ul>
-                                {/foreach}
-                                <br>
-                            </div>
-                        {/if}
+                                    <div style="margin-top: 5%;">
+                                        {foreach $msgs->getMessages() as $msg}
+                                        <ul class="error">	
+                                            <li>{$msg->text}</li>
+                                        </ul>
+                                        {/foreach}
+                                        <br>
+                                    </div>
+                            {/if}
                             <section id="banner">
+                                
                                 <div class="content">
+                                    
                                     <header>
-                                        <form id="main-form" method="post" action="{url action="edit_product"}" enctype="multipart/form-data">
+                                        <form id="main-form" method="post" action="{url action="add_product"}" enctype="multipart/form-data">
                                             
                                                 <span>Nazwa</span>
-                                                <input type="text" name="name" value="{$name}" required>
+                                                <input type="text" name="name" required>
                                                 <br>
                                                 <span>Typ</span>
                                                 <select name="type">
-                                                    <option value="1" {if $type_name == "Środki ochrony roślin"}selected{/if}>Środki ochrony roślin</option>
-                                                    <option value="2" {if $type_name == "Nawozy"}selected{/if}>Nawozy</option>
-                                                    <option value="3" {if $type_name == "Nasiona"}selected{/if}>Nasiona</option>
+                                                    <option value="1">Środki ochrony roślin</option>
+                                                    <option value="2">Nawozy</option>
+                                                    <option value="3">Nasiona</option>
                                                 </select>
                                                 <br>
                                                 <span>Cena</span>
-                                                <input type="text"name="price" value="{$price}" required>
+                                                <input type="text" name="price" required>
                                                 <br>
                                                 <span>Opis</span>
-                                                <textarea name="description" id="description" rows="10" style="resize: none;" required>{$description}</textarea>
+                                                <textarea name="description" rows="10" style="resize: none;" required></textarea>
                                                 <br>
-                                                <input class="primary" style="display: inline-block; width: 100%;" type="submit" value="Edytuj">
+                                                <input class="primary" style="display: inline-block; width: 100%;" type="submit" value="Dodać">
                                         </form>
                                     </header>
                                 </div>
                                 <div style="display: flex; width: 50%; padding: 2% 2% 5% 5%;">
-                                    <label for="image" class="custom-file-upload">
+                                    <label for="photo" class="custom-file-upload">
                                             <img src="{$conf}/../app/views/images/photo.png" style="width: 40%; " alt="#">
                                     </label>
-                                    <input id="image" type="file" name="image" form="main-form">
+                                    <input id="photo" type="file" form="main-form" name="image">
                                 </div>
                                 
                             </section>
