@@ -3,25 +3,21 @@ namespace app\controllers;
 
 use core\App;
 use core\RoleUtils;
+use core\SessionUtils;
 
 class MainCtrl{
 
     public function __construct(){
-        
-
-        $this->checkRole();
-       
-        App::getSmarty()->assign("conf",App::getConf()->app_url);
-    }
-
-    public function checkRole(){
         App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
         App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
         App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
+        
+        $login = SessionUtils::load("login", true);
+       
+        App::getSmarty()->assign("login",$login);       
+        App::getSmarty()->assign("conf",App::getConf()->app_url);
     }
-
     public function action_main_display(){
-        $this->checkRole();
 
         App::getSmarty()->display("main.html");
     }
@@ -31,9 +27,7 @@ class MainCtrl{
     public function action_products_list_worker_display(){
         App::getSmarty()->display("products-list-worker.html");
     }
-    public function action_profile_display(){
-        App::getSmarty()->display("profile.html");
-    }
+    
     public function action_shoping_cart_display(){
         App::getSmarty()->display("shoping-cart.html");
     }

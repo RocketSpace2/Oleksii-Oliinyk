@@ -6,6 +6,7 @@ use core\App;
 use core\RoleUtils;
 use core\ParamUtils;
 use core\Message;
+use core\SessionUtils;
 
 class LoginCtrl{
 
@@ -15,7 +16,10 @@ class LoginCtrl{
         App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
         App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
         App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
+        
+        $login = SessionUtils::load("login", true);
        
+        App::getSmarty()->assign("login",$login);       
         App::getSmarty()->assign("conf",App::getConf()->app_url);
     }
 
@@ -51,6 +55,8 @@ class LoginCtrl{
     }
 
     public function addRoles(){
+        SessionUtils::store("login",$this->form["login"]);
+
         $results = App::getDB()->select("user",["id_user"],[
             "login" => $this->form["login"]
         ]);
@@ -90,7 +96,7 @@ class LoginCtrl{
     public function action_logout(){
         session_destroy();
 
-        App::getRouter()->forwardTo("main_display");
+        App::getRouter()->redirectTo("main_display");
     }
 
 }

@@ -31,7 +31,6 @@
 								</header>
 
                                 {block name="content"}Default text{/block}
-
                     <!-- Sidebar -->
 					<div id="sidebar">
 						<div class="inner">
@@ -40,7 +39,7 @@
 								<nav id="menu">
 									<header class="major">
 										<h2>
-											<a href="{url action = "profile_display"}"><img src="{$conf}/../app/views/images/profile.png" width="12%" height="12%" alt="#"> Gość</a>
+											<a href="{url action = "profile_display"}"><img src="{$conf}/../app/views/images/profile.png" width="12%" height="12%" alt="#"> {if $login != null}{$login}{else}Gość{/if}</a>
 										</h2>
 										<h2 style="display: inline-block;">
 											<a href="{url action = "shoping_cart_display"}"><img src="{$conf}/../app/views/images/shoping-cart.png" width="12%" height="12%" alt="#"> Pusty</a>
@@ -60,7 +59,9 @@
 										<li><a href="{url action = "main"}#about">O nas</a></li>										
 									</ul>
 								</nav>
-								{if !$isUser}
+								{if $isUser == null}
+								<!--  $isUser == null has to be here, because after destroying session such variables as isUser, isWorker and isAdmin
+								are deleted and when I assign these variables after logout they will have null, because there is no role at all yet -->
 								<div class="col-6 col-12-small">
 									<ul class="actions stacked">
 										<li><a href="{url action = "login_display"}" class="button primary fit">Zaloguj się</a></li>

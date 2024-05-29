@@ -4,18 +4,24 @@
                             <section id="banner">
                                 <div class="content">
                                     <header>
-                                        <h1>Gość</h1>
-                                        <span>Miasto: </span><h3>Kraków</h3>
-                                        <span>Kod pocztowy: </span><h3>405-67</h3>
-                                        <span>Ulica: </span><h3>Krakowska</h3>
-                                        <span>Numer ulicy: </span><h3> 34</h3>
-                                        <span>Numer lokalu: </span><h3> 57</h3>
+                                        <h1>{$login}</h1>
+                                        <span>Miasto: </span><h3>{$city}</h3>
+                                        <span>Kod pocztowy: </span><h3>{$postcode}</h3>
+                                        <span>Ulica: </span><h3>{$street}</h3>
+                                        <span>Numer ulicy: </span><h3> {$street_number}</h3>
+										{if $apartment_number != null}
+                                        <span>Numer lokalu: </span><h3> {$apartment_number}</h3>
+										{/if}
                                     </header>
                                     <a href="{url action = "edit_profile_display"}" class="button fit primary">Edytuj</a>
                                 </div>
                                 <div style="display: flex; width: 50%; ">
                                     <span class="image object" >
-                                        <img style="display: inline-flex; width: 150%;" src="{$conf}/../app/views/images/profile-photo.png" alt="" />
+										{if $image != null}
+										<img style="display: inline-flex; width: 150%;" src="{$image}" alt="">
+										{else}
+										<img style="display: inline-flex; width: 150%;" src="{$conf}/../app/views/images/default.jpg" alt="" />
+										{/if}
                                     </span>
                                 </div>
                                 

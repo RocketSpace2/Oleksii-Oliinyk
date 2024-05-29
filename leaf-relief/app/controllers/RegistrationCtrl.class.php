@@ -6,6 +6,7 @@ use core\RoleUtils;
 use core\ParamUtils;
 use core\Message;
 use core\Validator;
+use core\SessionUtils;
 class RegistrationCtrl{
 
     private $form = array();
@@ -14,7 +15,10 @@ class RegistrationCtrl{
         App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
         App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
         App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
+        
+        $login = SessionUtils::load("login", true);
        
+        App::getSmarty()->assign("login",$login);       
         App::getSmarty()->assign("conf",App::getConf()->app_url);
     }
 
@@ -124,7 +128,12 @@ class RegistrationCtrl{
     public function action_registrate(){
         $this->validation();
 
-
+        SessionUtils::store("login",$this->form["login"]);
+        SessionUtils::store("city",$this->form["city"]);
+        SessionUtils::store("street",$this->form["street"]);
+        SessionUtils::store("street_number",$this->form["street_number"]);
+        SessionUtils::store("apartment_number",$this->form["apartment_number"]);
+        SessionUtils::store("postcode",$this->form["postcode"]);
 
         $id_addres = $this->findIdAddres();
 
@@ -168,7 +177,6 @@ class RegistrationCtrl{
 
     
         RoleUtils::addRole("user");
-        
 
         App::getRouter()->forwardTo("main_display");
     }
