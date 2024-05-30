@@ -119,7 +119,7 @@ class ProductsListWorkerCtrl{
         }
 
     }
-    public function action_add_product(){
+    public function action_add_product_worker(){
         $this->validation();
 
         App::getDB()->insert("product",[

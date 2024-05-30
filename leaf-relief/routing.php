@@ -32,7 +32,7 @@ Utils::addRoute('edit_profile', 'ProfileCtrl',["user"]);
 
 Utils::addRoute('products_list_worker_display', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('add_product_display', 'ProductsListWorkerCtrl',["worker"]);
-Utils::addRoute('add_product', 'ProductsListWorkerCtrl',["worker"]);
+Utils::addRoute('add_product_worker', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('delete_product', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('edit_product_display', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('edit_product', 'ProductsListWorkerCtrl',["worker"]);
