@@ -1,5 +1,19 @@
 {extends file = "default.html"}
 {block name=content}
+<style>
+	.error{
+		background-color: #f56a6a;
+		padding-left: 5%;
+		padding-right: 3%;
+        margin-bottom: 1%;
+		color: white;
+        width: 50%;
+		display: block;
+		border-radius: 15px;
+		font-size: 1.1em;
+		font-family: "Roboto Slab", serif;
+	}
+</style>
 							<!-- Content -->
                             <section id="banner">
                                 <div class="content" style="display: block; width: 50%;">
@@ -7,12 +21,24 @@
                                         <h1>{$name}</h1>
                                         <span>Cena: </span><h3>{$price} zł</h3>
                                     </header>
-                                    <form type="post" action="#">
-                                        <input style="display: inline; width: 25%;" type="text" placeholder="Ilość">
+                                    <form type="post" action="{url action="add_product"}">
+                                        <input style="display: inline; width: 25%;" type="text" name="amount" placeholder="Ilość" required>
                                         <br>
                                         <br>
-                                        <input class="primary" style="display: inline-block; width: 100%;" type="submit" value="Do koszyka">
+                                        <button class="primary" style="display: inline-block; width: 100%;" type="submit" name="name" value="{$name}">
+                                            Do koszyka
+                                        </button>
                                     </form>
+
+                                    {if $msgs->isWarning()}
+										<ul class="error">	
+												{foreach $msgs->getMessages() as $msg}
+												<li>{$msg->text}</li>
+												{/foreach}
+										</ul>	
+										<br>
+										<br>
+									{/if}
                                 </div>
                                 
                                     <span style="display: block; width: 30%;" class="image object">
@@ -25,6 +51,11 @@
                                     <h2>Opis produkty</h2>
                                     <p>{$description}</p>
                                 </article>
+
+                                <hr class="major">
+                                <a style="display: flex; height: 60px; align-items: center; justify-content: center;" href="{url action="products_list_display"}" class="button primary">Katalog produktów</a>
+                                <br>
+                                <br>
 						</div>
 					</div>
 {/block}

@@ -7,20 +7,15 @@ use core\RoleUtils;
 use core\ParamUtils;
 use core\Message;
 use core\SessionUtils;
+use app\controllers\MainConstructor;
+    
 
 class LoginCtrl{
 
     private $form = array();
 
     public function __construct(){
-        App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
-        App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
-        App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
-        
-        $login = SessionUtils::load("login", true);
-       
-        App::getSmarty()->assign("login",$login);       
-        App::getSmarty()->assign("conf",App::getConf()->app_url);
+        MainConstructor::main_construct();
     }
 
     public function action_login_display(){
@@ -36,16 +31,16 @@ class LoginCtrl{
         ]);
 
         if(!isset($userLogin[0]["login"])){
-            App::getMessages()->addMessage(new Message("Login jest niepoprawny",Message::ERROR));
-        }
-
-        $userPassword = App::getDB()->select("user",["password"],[
-            "login" => $this->form["login"]
-        ]);
-        
-        if(!password_verify($this->form["password"],$userPassword[0]["password"])){
             App::getMessages()->addMessage(new Message("Login lub hasło jest niepoprawne",Message::ERROR));
-        } 
+        }else{
+            $userPassword = App::getDB()->select("user",["password"],[
+                "login" => $this->form["login"]
+            ]);
+            
+            if(!password_verify($this->form["password"],$userPassword[0]["password"])){
+                App::getMessages()->addMessage(new Message("Login lub hasło jest niepoprawne",Message::ERROR));
+            } 
+        }
 
 
         if(App::getMessages()->isError()){
@@ -64,7 +59,8 @@ class LoginCtrl{
         $id_user = $results[0]["id_user"];
 
         $roles = App::getDB()->select("catalog_user",["id_role"],[
-            "id_user" => $id_user
+            "id_user" => $id_user,
+            "date_of_deactivation" => null
         ]);
 
         for($i = 0; $i < count($roles); $i++){

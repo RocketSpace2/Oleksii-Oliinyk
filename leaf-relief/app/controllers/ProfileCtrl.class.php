@@ -42,6 +42,8 @@ class ProfileCtrl{
         App::getSmarty()->assign("postcode",$this->user["postcode"]);  
         App::getSmarty()->assign("image",$this->user["image"]);    
         App::getSmarty()->assign("conf",App::getConf()->app_url);
+
+        MainConstructor::count_products_cart();
     }
 
     public function action_profile_display(){

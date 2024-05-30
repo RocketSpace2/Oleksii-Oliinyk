@@ -6,12 +6,15 @@
         }
 
         .custom {
-            border-radius: 20px;
+            border-radius: 30px;
             color: #f56a6a;
-            text-align: center;
-            width: 8%;
+            align-items: center; 
+            justify-content: center;
+            /* text-align: center; */
+            width: 75%;
+            height: 39px;
             border: 3px solid #f56a6a;
-            display: inline-block;
+            display: flex;
             cursor: pointer;
             
         }
@@ -26,9 +29,16 @@
 
                                 <div class="table-wrapper">
                                     <table>
+                                        {if $empty != null}
+                                        <hr>
+                                        <h2 style="display: flex; align-items: center; justify-content: center;">{$empty}</h2>
+                                        <hr class="major">
+                                        <a style="display: flex; height: 60px; align-items: center; justify-content: center;" href="{url action="products_list_display"}" class="button primary">Katalog produktów</a>
+                                        {else}
                                         <thead>
                                             <tr >
-                                                <th style="display: inline; width: 15%;">Nazwa</th>
+                                                <th style="display: inline-flex; width: 12.5%;">Zdjęcie</th>
+                                                <th style="display: inline-flex; width: 11%;">Nazwa</th>
                                                 <th style="display: inline-flex; width: 34.5%;">Opis</th>
                                                 <th style="display: inline-flex; width: 12%;">Ilość</th>
                                                 <th style="display: inline-flex;">Cena</th>
@@ -37,133 +47,51 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr  style="display: flex; width: 101.9%;">
-                                                <td>Item1</td>
-                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
-                                                <td style="display: inline-block; width: 20%;">1</td>
-                                                <td style="display: inline-block; width: 10%;">29.99</td>
-                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
-                                                    <label for="minus" class="custom">
-                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
-                                                    
-                                                    <label for="plus" class="custom">
-                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+                                                {foreach $products as $row}
+                                                <tr  style="display: flex;">
+                                                    <td style="display: inline-flex;  width: 128px;"><img style="border-radius: 5px;" width="100" height="100" src="{$row.image}" alt=""></td>
+                                                    <td style="display: inline-flex; width: 115px;">{$row.name}</td>
+                                                    <td style="display: inline-flex; width: 358px;">{$row.description}</td>
+                                                    <td style="display: inline-flex; width: 122px;">{$row.amount}</td>
+                                                    <td style="display: inline-flex; width: 100px;">{$row.price} zł</td>
+                                                    <td style="display: inline-flex; width: 180px; align-items: center; justify-content: center;">
+                                                        <form method="post" style="display: flex; align-items: center; justify-content: center;" action="{url action="minus_product"}">
+                                                        <label for="minus{$row.id_product}" class="custom">
+                                                            <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
+                                                        </label>
+                                                        <button style="display: none;" class="primary" type="submit" id="minus{$row.id_product}" name="name" value="{$row.name}"></button>
+                                                        </form>
 
-                                                    <label for="delete" class="custom background">
-                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr  style="display: flex; width: 101.9%;">
-                                                <td>Item1</td>
-                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
-                                                <td style="display: inline-block; width: 20%;">1</td>
-                                                <td style="display: inline-block; width: 10%;">29.99</td>
-                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
-                                                    <label for="minus" class="custom">
-                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
-                                                    
-                                                    <label for="plus" class="custom">
-                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
+                                                        <form method="post" style="display: flex; align-items: center; justify-content: center;" action="{url action="plus_product"}">
+                                                        <label for="plus{$row.id_product}" class="custom">
+                                                            <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
+                                                        </label>
+                                                        <button style="display: none;" class="primary" type="submit" id="plus{$row.id_product}" name="name" value="{$row.name}"></button>
+                                                        </form>
 
-                                                    <label for="delete" class="custom background">
-                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr  style="display: flex; width: 101.9%;">
-                                                <td>Item1</td>
-                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
-                                                <td style="display: inline-block; width: 20%;">1</td>
-                                                <td style="display: inline-block; width: 10%;">29.99</td>
-                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
-                                                    <label for="minus" class="custom">
-                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
-                                                    
-                                                    <label for="plus" class="custom">
-                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
-
-                                                    <label for="delete" class="custom background">
-                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr  style="display: flex; width: 101.9%;">
-                                                <td>Item1</td>
-                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
-                                                <td style="display: inline-block; width: 20%;">1</td>
-                                                <td style="display: inline-block; width: 10%;">29.99</td>
-                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
-                                                    <label for="minus" class="custom">
-                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
-                                                    
-                                                    <label for="plus" class="custom">
-                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
-
-                                                    <label for="delete" class="custom background">
-                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
-                                            <tr  style="display: flex; width: 101.9%;">
-                                                <td>Item1</td>
-                                                <td style="display: inline-block; width: 65%;">Ante turpis integer aliquet porttitor.</td>
-                                                <td style="display: inline-block; width: 20%;">1</td>
-                                                <td style="display: inline-block; width: 10%;">29.99</td>
-                                                <td style="display: inline-block; width: 80%; text-align: center; margin-bottom: 0; padding-bottom: 0;"> <form method="post" action="#">
-                                                    <label for="minus" class="custom">
-                                                        <img width="80%" src="{$conf}/../app/views/images/minus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="minus" id="minus" value="Odjąć">
-                                                    
-                                                    <label for="plus" class="custom">
-                                                        <img width="100%" src="{$conf}/../app/views/images/plus.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="plus" id="plus" value="Dodać">
-
-                                                    <label for="delete" class="custom background">
-                                                        <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
-                                                    </label>
-                                                    <input style="display: none;" type="submit" name="delete" id="delete" value="usunąć">
-                                                </form></td>
-                                                                                              
-                                            </tr>
+                                                        <form method="post" style="display: flex; align-items: center; justify-content: center;" action="{url action="delete_product_cart"}">
+                                                        <label for="delete{$row.id_product}" class="custom background">
+                                                            <img width="80%" src="{$conf}/../app/views/images/trash-bucket.png" alt="#">
+                                                        </label>
+                                                        <button style="display: none;" class="primary" type="submit" id="delete{$row.id_product}" name="name" value="{$row.name}"></button>
+                                                        </form>
+                                                    </td>                                              
+                                                </tr>
+                                                {/foreach}
+                                               
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colspan="2" style="display: inline-block; width: 52.5%;"></td>
-                                                <td style="display: inline-block; width: 22.5%">100.00</td>
+                                                <td colspan="3" style="display: inline-block; width: 720px;"></td>
+                                                <td style="display: inline-block; width: 97px">{$sum} zł</td>
                                                 <td style="display: inline-block; text-align: right;">
-                                                    <form method="post" action="#">
-                                                        <input type="submit" name="buy" id="buy" value="Kupić" class="primary">
+                                                    <form method="post" action="{url action="submit_order"}">
+                                                        <input type="submit" name="buy" id="buy" value="Złożyć zamówienie" class="primary">
                                                     </form>
                                                 </td>
                                             </tr>
                                         </tfoot>
+                                        {/if}
                                     </table>
                                 </div>	
 						</div>

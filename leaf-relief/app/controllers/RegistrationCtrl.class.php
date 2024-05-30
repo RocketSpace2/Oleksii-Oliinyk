@@ -12,14 +12,7 @@ class RegistrationCtrl{
     private $form = array();
 
     public function __construct(){
-        App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
-        App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
-        App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
-        
-        $login = SessionUtils::load("login", true);
-       
-        App::getSmarty()->assign("login",$login);       
-        App::getSmarty()->assign("conf",App::getConf()->app_url);
+        MainConstructor::main_construct();
     }
 
     public function action_registration_display(){

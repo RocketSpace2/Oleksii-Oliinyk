@@ -9,12 +9,8 @@ App::getRouter()->setLoginRoute('login_display'); #action to forward if no permi
 Utils::addRoute('main_display', 'MainCtrl');
 
 
-Utils::addRoute('shoping_cart_display', 'MainCtrl',["user"]);
 
 
-Utils::addRoute('edit_products_list_worker_display', 'MainCtrl');
-
-Utils::addRoute('product_display', 'MainCtrl');
 
 
 Utils::addRoute('registration_display', 'RegistrationCtrl');
@@ -41,6 +37,15 @@ Utils::addRoute('delete_product', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('edit_product_display', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('edit_product', 'ProductsListWorkerCtrl',["worker"]);
 
+Utils::addRoute('orders', 'OrdersCtrl',["worker"]);
+
 Utils::addRoute('products_list_display', 'ProductListCtrl');
 Utils::addRoute('filter_products', 'ProductListCtrl');
 Utils::addRoute('product_display', 'ProductListCtrl');
+Utils::addRoute('add_product', 'ProductListCtrl');
+
+Utils::addRoute('shoping_cart_display', 'ShopingCartCtrl',["user"]);
+Utils::addRoute('minus_product', 'ShopingCartCtrl',["user"]);
+Utils::addRoute('plus_product', 'ShopingCartCtrl',["user"]);
+Utils::addRoute('delete_product_cart', 'ShopingCartCtrl',["user"]);
+Utils::addRoute('submit_order', 'ShopingCartCtrl',["user"]);

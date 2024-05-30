@@ -12,16 +12,9 @@ class ProductsListWorkerCtrl{
     private $form = array();
     private $editing;
     public function __construct(){
+        MainConstructor::main_construct();
+        
         $this->editing = false;
-        
-        App::getSmarty()->assign("isUser",RoleUtils::inRole("user"));
-        App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
-        App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
-        
-        $login = SessionUtils::load("login", true);
-       
-        App::getSmarty()->assign("login",$login);       
-        App::getSmarty()->assign("conf",App::getConf()->app_url);
     }
 
     public function action_products_list_worker_display(){
@@ -198,6 +191,6 @@ class ProductsListWorkerCtrl{
         ]
         );
 
-        App::getRouter()->forwardTo("products_list_worker_display");
+        App::getRouter()->redirectTo("products_list_worker_display");
     }
 } 
