@@ -37,12 +37,15 @@ Utils::addRoute('delete_product', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('edit_product_display', 'ProductsListWorkerCtrl',["worker"]);
 Utils::addRoute('edit_product', 'ProductsListWorkerCtrl',["worker"]);
 
+
 Utils::addRoute('orders', 'OrdersCtrl',["worker"]);
+Utils::addRoute('confirm_order', 'OrdersCtrl',["worker"]);
+
 
 Utils::addRoute('products_list_display', 'ProductListCtrl');
 Utils::addRoute('filter_products', 'ProductListCtrl');
 Utils::addRoute('product_display', 'ProductListCtrl');
-Utils::addRoute('add_product', 'ProductListCtrl');
+Utils::addRoute('add_product', 'ProductListCtrl',["user"]);
 
 Utils::addRoute('shoping_cart_display', 'ShopingCartCtrl',["user"]);
 Utils::addRoute('minus_product', 'ShopingCartCtrl',["user"]);

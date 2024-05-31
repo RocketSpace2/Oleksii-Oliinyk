@@ -31,8 +31,10 @@ class ProfileCtrl{
         $this->user["image"] = $result[0]["image"];
         
         
+        if(isset($this->user["image"])){
+            $this->user["image"] = 'data:image/png;base64,'.base64_encode($this->user["image"]);
+        }
         
-        $this->user["image"] = 'data:image/png;base64,'.base64_encode($this->user["image"]);
        
         App::getSmarty()->assign("login",$this->user["login"]);    
         App::getSmarty()->assign("city",$this->user["city"]); 

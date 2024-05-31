@@ -18,7 +18,8 @@ class UserListCtrl{
             "[><]user" => "id_user",
             "[><]catalog" => "id_role"
         ], ["login","role_name","date_of_activation", "date_of_deactivation"],[
-            "ORDER" => "login"
+            "ORDER" => "login",
+            "login[!]" => SessionUtils::load("login",true)
         ]);
         
         
@@ -34,7 +35,8 @@ class UserListCtrl{
                 "[><]catalog" => "id_role"
             ], ["login","role_name","date_of_activation", "date_of_deactivation"],[
                 "ORDER" => "login",
-                "date_of_deactivation[!]" => null
+                "date_of_deactivation[!]" => null,
+                "login[!]" => SessionUtils::load("login",true)
             ]);
         }
         elseif($role == "activated"){
@@ -43,7 +45,8 @@ class UserListCtrl{
                 "[><]catalog" => "id_role"
             ], ["login","role_name","date_of_activation", "date_of_deactivation"],[
                 "ORDER" => "login",
-                "date_of_deactivation" => null
+                "date_of_deactivation" => null,
+                "login[!]" => SessionUtils::load("login",true)
             ]);
         }else{
             $valid = new Validator();
@@ -58,7 +61,8 @@ class UserListCtrl{
                 "[><]catalog" => "id_role"
             ], ["login","role_name","date_of_activation", "date_of_deactivation"],[
                 "ORDER" => "login",
-                "login[~]" => $query
+                "login[~]" => $query,
+                "login[!]" => SessionUtils::load("login",true)
             ]);
         }
 

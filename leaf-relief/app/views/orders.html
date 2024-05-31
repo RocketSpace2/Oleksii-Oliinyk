@@ -1,10 +1,17 @@
 {extends file = "default.html"}
 {block name=content}
+                                <br>
                                 {if $empty != null}
                                 <hr>
                                     <h3 style="display: flex; align-items: center; justify-content: center;">{$empty}</h3>
                                 <hr>
                                 {else}
+                                {assign var="user" value=""}
+                                {assign var="products" value=""}
+
+                                {foreach $products_user as $row}
+                                {$user = $row.user}
+                                <hr>
                                 <br>
                                 <h2>Użytkownik</h2>
                                 <div class="table-wrapper">
@@ -12,13 +19,16 @@
                                         <thead>
                                             <tr >
                                                 <th>Login</th>
-                                                <th>Data aktywacji roli</th>
-                                                <th>Data deaktywacji roli</th>
-                                                <th></th>
+                                                <th>Miasto</th>
+                                                <th>Kod pocztowy</th>
+                                                <th>Nazwa ulicy</th>
+                                                <th>Numer ulicy</th>
+                                                <th>Numer lokalu</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
+                                            
                                             {foreach $user as $data}
                                                     {if $data == null}
                                                         <td> — </td>
@@ -49,13 +59,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                {foreach $products as $row}
+                                                {foreach $row.products as $row_products}
                                                 <tr  style="display: flex;">
-                                                    <td style="display: inline-flex;  width: 128px;"><img style="border-radius: 5px;" width="100" height="100" src="{$row.image}" alt=""></td>
-                                                    <td style="display: inline-flex; width: 115px;">{$row.name}</td>
-                                                    <td style="display: inline-flex; width: 358px;">{$row.description}</td>
-                                                    <td style="display: inline-flex; width: 122px;">{$row.amount}</td>
-                                                    <td style="display: inline-flex; width: 100px;">{$row.price} zł</td>                                              
+                                                    <td style="display: inline-flex;  width: 128px;"><img style="border-radius: 5px;" width="100" height="100" src="{$row_products.image}" alt=""></td>
+                                                    <td style="display: inline-flex; width: 115px;">{$row_products.name}</td>
+                                                    <td style="display: inline-flex; width: 358px;">{$row_products.description}</td>
+                                                    <td style="display: inline-flex; width: 122px;">{$row_products.amount}</td>
+                                                    <td style="display: inline-flex; width: 100px;">{$row_products.price} zł</td>                                              
                                                 </tr>
                                                 {/foreach}
                                                
@@ -63,11 +73,19 @@
                                         <tfoot>
                                             <tr>
                                                 <td colspan="3" style="display: inline-block; width: 720px;"></td>
-                                                <td style="display: inline-block; width: 97px">{$sum} zł</td>
+                                                <td style="display: inline-block; width: 97px">{$row.sum} zł</td>
                                             </tr>
                                         </tfoot>
                                     </table>
+
+                                    <form action="{url action ="confirm_order"}">
+                                        <button style="display: flex; width: 100%; align-items: center; justify-content: center;" class="primary" type="submit" name="login" value="{$user.login}">
+                                            Potwierdzić zamówienie
+                                        </button>
+                                    </form>
+
                                 </div>	
+                                {/foreach}
                                 {/if}
 						</div>
 					</div>
