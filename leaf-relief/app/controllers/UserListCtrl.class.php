@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use core\App;
-use core\RoleUtils;
 use core\ParamUtils;
 use core\Validator;
 use core\SessionUtils;
@@ -72,7 +71,7 @@ class UserListCtrl{
 
     public function action_edit_users_list(){
         $login = ParamUtils::getFromRequest("login");
-        SessionUtils::store("login", $login);
+        SessionUtils::store("login_edit", $login);
 
         $catalog_users = App::getDB()->select("catalog_user",[
             "[><]user" => "id_user",
@@ -99,7 +98,7 @@ class UserListCtrl{
     public function action_edit_user(){
 
         $user = App::getDB()->select("user",["id_user"],[
-            "login" => SessionUtils::load("login",true)
+            "login" => SessionUtils::load("login_edit",true)
         ]);
 
         $id_user = $user[0]["id_user"];
