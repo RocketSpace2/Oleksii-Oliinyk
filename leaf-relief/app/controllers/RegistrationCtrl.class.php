@@ -122,11 +122,6 @@ class RegistrationCtrl{
         $this->validation();
 
         SessionUtils::store("login",$this->form["login"]);
-        SessionUtils::store("city",$this->form["city"]);
-        SessionUtils::store("street",$this->form["street"]);
-        SessionUtils::store("street_number",$this->form["street_number"]);
-        SessionUtils::store("apartment_number",$this->form["apartment_number"]);
-        SessionUtils::store("postcode",$this->form["postcode"]);
 
         $id_addres = $this->findIdAddres();
 

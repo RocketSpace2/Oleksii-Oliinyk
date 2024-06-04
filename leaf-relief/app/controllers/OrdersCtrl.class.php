@@ -96,6 +96,6 @@ class OrdersCtrl{
             "id_order" => $id_order
         ]);
 
-        App::getRouter()->forwardTo("orders");
+        App::getRouter()->redirectTo("orders");
     }
 } 

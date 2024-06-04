@@ -86,7 +86,7 @@ class LoginCtrl{
         
         $this->addRoles();
 
-        App::getRouter()->forwardTo("main_display");
+        App::getRouter()->redirectTo("main_display");
     }
 
     public function action_logout(){

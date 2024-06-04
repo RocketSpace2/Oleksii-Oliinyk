@@ -16,6 +16,7 @@ class ProfileCtrl{
         App::getSmarty()->assign("isWorker",RoleUtils::inRole("worker"));
         App::getSmarty()->assign("isAdmin",RoleUtils::inRole("admin"));
 
+        //Take data from database in case of changing something in editing
         $result = App::getDB()->select("user",["[><]addres" => "id_addres"],
         ["login","city","postcode","street", "street_number","apartment_number","image"],[
             "login" => SessionUtils::load("login",true)
@@ -121,6 +122,7 @@ class ProfileCtrl{
         }
 
         if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+            //file_get_contents convert all file into the String
             $this->form["image"] = file_get_contents($_FILES['image']['tmp_name']);
         }else{
             $image = App::getDB()->select("user",["image"],[

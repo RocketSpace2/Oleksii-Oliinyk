@@ -81,6 +81,7 @@ class UserListCtrl{
             "date_of_deactivation" => null
         ]);
 
+        //In Database roles ordered by id_role, so the last activated role will be on the last row, that is why i use while 
         $i = 0;
 
         while(isset($catalog_users[$i])){

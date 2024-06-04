@@ -8,11 +8,6 @@ App::getRouter()->setLoginRoute('login_display'); #action to forward if no permi
 
 Utils::addRoute('main_display', 'MainCtrl');
 
-
-
-
-
-
 Utils::addRoute('registration_display', 'RegistrationCtrl');
 Utils::addRoute('registrate', 'RegistrationCtrl');
 

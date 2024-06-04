@@ -6,7 +6,6 @@ use core\Message;
 use core\ParamUtils;
 use core\Validator;
 use core\SessionUtils;
-use core\RoleUtils;
 
 class ProductListCtrl{
     public function __construct(){
@@ -33,14 +32,10 @@ class ProductListCtrl{
 
     }
 
-    public function action_filter_products(){
-        //$valid = new Validator();
-        
+    public function action_filter_products(){       
         $query = ParamUtils::getFromRequest("query");
 
-        if(isset($name)){
-            $query = $query.'%';
-        }
+        $query = $query.'%';
 
         
         $products = App::getDB()->select("product",["[><]type" => "id_type"],["type_name", "name", "description", "price", "image"], [
@@ -151,7 +146,7 @@ class ProductListCtrl{
             App::getRouter()->forwardTo("product_display");
         }
 
-        App::getRouter()->forwardTo("products_list_display");
+        App::getRouter()->redirectTo("products_list_display");
         
     }
 

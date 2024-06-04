@@ -2,7 +2,6 @@
 namespace app\controllers;
 
 use core\App;
-use core\RoleUtils;
 use core\SessionUtils;
 use core\Validator;
 use core\Message;
@@ -76,12 +75,10 @@ class ProductsListWorkerCtrl{
                 App::getMessages()->addMessage(new Message("Podana nazwa produktu już istnieje", Message::ERROR));
             }
         }else{
-            if($this->form["name"] != SessionUtils::load("name",true)){
-                $check = App::getDB()->select("product",["name"],["name" => $this->form["name"]]);
+            $check = App::getDB()->select("product",["name"],["name" => $this->form["name"]]);
 
-                if(isset($check[0]["name"])){
-                    App::getMessages()->addMessage(new Message("Podana nazwa produktu już istnieje", Message::ERROR));
-                }
+            if(isset($check[0]["name"])){
+                App::getMessages()->addMessage(new Message("Podana nazwa produktu już istnieje", Message::ERROR));
             }
         }
 
@@ -130,7 +127,7 @@ class ProductsListWorkerCtrl{
             "image" => $this->form["image"]
         ]);
 
-        App::getRouter()->forwardTo("products_list_worker_display");
+        App::getRouter()->redirectTo("products_list_worker_display");
     }
 
     public function action_delete_product(){
@@ -140,7 +137,7 @@ class ProductsListWorkerCtrl{
             "name" => $name
         ]);
 
-        App::getRouter()->forwardTo("products_list_worker_display");
+        App::getRouter()->redirectTo("products_list_worker_display");
     }
 
 
@@ -162,7 +159,6 @@ class ProductsListWorkerCtrl{
         App::getSmarty()->assign("name", $product[0]["name"]);
         App::getSmarty()->assign("description", $product[0]["description"]);
         App::getSmarty()->assign("price", $product[0]["price"]);
-        //App::getSmarty()->assign("image", $product[0]["image"]);
 
         App::getSmarty()->display("edit-products-list-worker.html");
     }
